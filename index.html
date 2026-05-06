@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国足迹地图</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+<header class="header">
+<div class="header-left"><h1 class="logo">🗺️ 中国足迹地图</h1></div>
+<div class="header-center">
+<div class="search-wrapper">
+<input type="text" id="searchInput" placeholder="搜索省/市/区县..." autocomplete="off" />
+<div class="search-dropdown" id="searchDropdown" style="display:none"></div>
+</div>
+<nav class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item active" data-level="china">全国</span></nav>
+</div>
+<div class="header-right">
+<button class="btn btn-secondary" id="statsBtn">📊 统计</button>
+<button class="btn btn-secondary" id="visitedBtn">✈️ 足迹管理</button>
+<button class="btn btn-primary" id="backBtn" style="display:none">← 返回全国</button>
+</div>
+</header>
+<main class="main">
+<div class="map-container"><div id="mainMap" class="map"></div></div>
+<div class="loading-mask" id="loadingMask"><div class="loading-spinner"></div><p>加载地图数据中...</p></div>
+<div class="float-stats">
+<div class="stat-item"><span class="stat-value" id="provinceCount">0</span><span class="stat-label">省份</span></div>
+<div class="stat-item"><span class="stat-value" id="cityCount">0</span><span class="stat-label">城市</span></div>
+<div class="stat-item"><span class="stat-value" id="countyCount">0</span><span class="stat-label">区县</span></div>
+</div>
+<button id="reopenInfoBtn" class="btn btn-primary" style="position:absolute;top:24px;right:24px;display:none;z-index:100">📋 区县列表</button>
+</main>
+<aside class="side-panel" id="visitedPanel">
+<div class="panel-header"><h2>✈️ 我的足迹</h2><button class="btn-close" id="closeVisitedPanel">×</button></div>
+<div class="panel-tabs">
+<button class="tab-btn active" data-tab="provinces">省份</button>
+<button class="tab-btn" data-tab="cities">城市</button>
+<button class="tab-btn" data-tab="counties">区县</button>
+</div>
+<div class="panel-content" id="visitedList"></div>
+</aside>
+<aside class="side-panel" id="statsPanel">
+<div class="panel-header"><h2>📊 访问统计</h2><button class="btn-close" id="closeStatsPanel">×</button></div>
+<div class="stats-content">
+<div class="stats-chart" id="statsChart"></div>
+<div class="stats-details">
+<div class="stats-row"><span class="stats-label">已访问省份</span><span class="stats-value" id="statsProvinces">0 / 34</span></div>
+<div class="stats-row"><span class="stats-label">已访问城市</span><span class="stats-value" id="statsCities">0 / 300+</span></div>
+<div class="stats-row"><span class="stats-label">已访问区县</span><span class="stats-value" id="statsCounties">0 / 1500+</span></div>
+<div class="stats-rank" id="statsRank"></div>
+</div>
+</div>
+</aside>
+<div class="info-card" id="infoCard" style="display:none">
+<div class="info-card-header"><h3 id="infoCardTitle">区县</h3><button class="btn-close" id="closeInfoCard">×</button></div>
+<div class="info-card-body"></div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+</div>
+<script src="https://unpkg.com/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="js/visited-manager.js" type="module"></script>
+<script src="js/stats.js" type="module"></script>
+<script src="js/map-data.js" type="module"></script>
+<script src="js/echarts-config.js" type="module"></script>
+<script src="js/city-coords.js" type="module"></script>
+<script src="js/city-pinyin.js" type="module"></script>
+<script src="js/county-level.js" type="module"></script>
+<script src="js/state.js" type="module"></script>
+<script src="js/search.js" type="module"></script>
+<script src="js/app.js" type="module"></script>
+</body>
+</html>
